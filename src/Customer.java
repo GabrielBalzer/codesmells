@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 class Customer {
     private final String name;
@@ -26,7 +25,7 @@ class Customer {
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
         for (Rental each: rentals) {
-            double thisAmount = 0;
+            double thisAmount;
 
             //determine amounts for each line
             thisAmount = each.amountFor();
