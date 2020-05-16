@@ -25,21 +25,21 @@ class Customer {
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
         StringBuilder resultBuilder = new StringBuilder(result);
-        for (Rental each : customer.rentals) {
+        for (Rental rental : customer.rentals) {
             double thisAmount;
 
-            //determine amounts for each line
-            thisAmount = each.amountFor();
+            //determine amounts for rental line
+            thisAmount = rental.amountFor();
 
             // add frequent renter points
             frequentRenterPoints++;
 
             // add bonus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
+            if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
                 frequentRenterPoints++;
 
             //show figures for this rental
-            resultBuilder.append("\t").append(each.getMovie().getTitle()).append("\t").append("\t").append(each.getDaysRented()).append("\t").append(thisAmount).append("\n");
+            resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(thisAmount).append("\n");
             totalAmount += thisAmount;
         }
 
