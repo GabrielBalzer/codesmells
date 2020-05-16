@@ -2,9 +2,9 @@ class Rental {
     private final Movie movie;
     private final int daysRented;
 
-    public Rental(Movie newmovie, int newdaysRented) {
-        this.movie = newmovie;
-        this.daysRented = newdaysRented;
+    public Rental(Movie movie, int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
     static int getFrequentRenterPoints(Rental rental) {

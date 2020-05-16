@@ -5,8 +5,8 @@ class Customer {
     private final String name;
     private final List<Rental> rentals = new ArrayList<>();
 
-    public Customer(String newname) {
-        this.name = newname;
+    public Customer(String name) {
+        this.name = name;
     }
 
     public void addRental(Rental arg) {
