@@ -30,7 +30,7 @@ class Customer {
 
             //determine amounts for rental line
             rental_result = rental.getAmount();
-            frequentRenterPoints = Rental.getFrequentRenterPoints(rental);
+            frequentRenterPoints = rental.getFrequentRenterPoints();
 
             //show figures for this rental
             resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(rental_result).append("\n");
