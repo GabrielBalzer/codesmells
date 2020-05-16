@@ -19,24 +19,18 @@ class Customer {
 
     public static String statement(Customer customer) {
         double totalAmount = 0;
-        int frequentRenterPoints = 0;
         StringBuilder resultBuilder = new StringBuilder();
         resultBuilder.append("Rental Record for ").append(customer.getName()).append("\n");
         resultBuilder.append("\t").append("Title").append("\t").append("\t").append("Days").append("\t").append("Amount").append("\n");
 
 
+        int frequentRenterPoints = 0;
         for (Rental rental : customer.rentals) {
             double rental_result;
 
             //determine amounts for rental line
             rental_result = rental.getAmount();
-
-            // add frequent renter points
-            frequentRenterPoints++;
-
-            // add bonus for a two day new release rental
-            if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
-                frequentRenterPoints++;
+            frequentRenterPoints = getFrequentRenterPoints(rental);
 
             //show figures for this rental
             resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(rental_result).append("\n");
@@ -47,6 +41,15 @@ class Customer {
         resultBuilder.append("Amount owed is ").append(totalAmount).append("\n");
         resultBuilder.append("You earned ").append(frequentRenterPoints).append(" frequent renter points");
         return resultBuilder.toString();
+    }
+
+    private static int getFrequentRenterPoints(Rental rental) {
+        int frequentRenterPoints = 1;
+
+        // add bonus for a two day new release rental
+        if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
+            frequentRenterPoints++;
+        return frequentRenterPoints;
     }
 
 }
