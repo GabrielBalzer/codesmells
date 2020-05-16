@@ -20,16 +20,16 @@ class Customer {
     public static String statement(Customer customer) {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
+        StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.append("Rental Record for ").append(customer.getName()).append("\n");
+        resultBuilder.append("\t").append("Title").append("\t").append("\t").append("Days").append("\t").append("Amount").append("\n");
 
-        String result = "Rental Record for " + customer.getName() + "\n";
-        result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        StringBuilder resultBuilder = new StringBuilder(result);
         for (Rental rental : customer.rentals) {
-            double thisAmount;
+            double rental_result;
 
             //determine amounts for rental line
-            thisAmount = rental.amountFor();
+            rental_result = rental.amountFor();
 
             // add frequent renter points
             frequentRenterPoints++;
@@ -39,8 +39,8 @@ class Customer {
                 frequentRenterPoints++;
 
             //show figures for this rental
-            resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(thisAmount).append("\n");
-            totalAmount += thisAmount;
+            resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t").append("\t").append(rental.getDaysRented()).append("\t").append(rental_result).append("\n");
+            totalAmount += rental_result;
         }
 
         //add footer lines
