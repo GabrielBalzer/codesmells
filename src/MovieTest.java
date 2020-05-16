@@ -6,19 +6,15 @@ public class MovieTest {
 
     @Test
     void movieTest1() {
-        Movie movie = new Movie("MyMovie", 187);
+        Movie movie = new Movie("MyMovie");
 
         assertEquals(movie.getTitle(), "MyMovie");
-        assertEquals(movie.getPriceCode(), 187);
     }
 
     @Test
     void movieTest2() {
-        Movie movie = new Movie("MyMovie", 0);
+        Movie movie = new Movie("MyMovie");
 
-        movie.setPriceCode(555);
-
-        assertEquals(movie.getPriceCode(), 555);
     }
 
 }

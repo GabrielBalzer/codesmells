@@ -6,13 +6,12 @@ class RentalTest {
 
     @Test
     void rentalTest() {
-        Movie movie = new Movie("MyMovie", 123);
+        Movie movie = new Movie("MyMovie");
         Rental rental = new Rental(movie, 25);
 
         assertEquals(rental.getDaysRented(), 25);
 
         assertEquals(rental.getMovie().getTitle(), "MyMovie");
-        assertEquals(rental.getMovie().getPriceCode(), 123);
     }
 
 }
