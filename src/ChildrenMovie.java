@@ -1,5 +1,5 @@
 public class ChildrenMovie extends Movie {
-    public ChildrenMovie(String title, int priceCode) {
+    public ChildrenMovie(String title) {
         super(title);
     }
 
