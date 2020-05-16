@@ -29,7 +29,7 @@ class Customer {
             double rental_result;
 
             //determine amounts for rental line
-            rental_result = rental.amountFor();
+            rental_result = rental.getAmount();
 
             // add frequent renter points
             frequentRenterPoints++;
