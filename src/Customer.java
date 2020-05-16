@@ -6,7 +6,7 @@ class Customer {
     private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String newname) {
-        name = newname;
+        this.name = newname;
     }
 
     public void addRental(Rental arg) {
@@ -17,14 +17,15 @@ class Customer {
         return name;
     }
 
-    public String statement() {
+    public static String statement(Customer customer) {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
 
-        String result = "Rental Record for " + this.getName() + "\n";
+        String result = "Rental Record for " + customer.getName() + "\n";
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        for (Rental each : rentals) {
+        StringBuilder resultBuilder = new StringBuilder(result);
+        for (Rental each : customer.rentals) {
             double thisAmount;
 
             //determine amounts for each line
@@ -38,14 +39,14 @@ class Customer {
                 frequentRenterPoints++;
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + "\t" + each.getDaysRented() + "\t" + thisAmount + "\n";
+            resultBuilder.append("\t").append(each.getMovie().getTitle()).append("\t").append("\t").append(each.getDaysRented()).append("\t").append(thisAmount).append("\n");
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points";
-        return result;
+        resultBuilder.append("Amount owed is ").append(totalAmount).append("\n");
+        resultBuilder.append("You earned ").append(frequentRenterPoints).append(" frequent renter points");
+        return resultBuilder.toString();
     }
 
 }
