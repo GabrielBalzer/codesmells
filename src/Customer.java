@@ -24,21 +24,21 @@ class Customer {
         String result = "Rental Record for " + this.getName() + "\n";
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        for (Rental each: rentals) {
+        for (Rental each : rentals) {
             double thisAmount;
 
             //determine amounts for each line
             thisAmount = each.amountFor();
 
             // add frequent renter points
-            frequentRenterPoints ++;
+            frequentRenterPoints++;
 
             // add bonus for a two day new release rental
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
-                frequentRenterPoints ++;
+                frequentRenterPoints++;
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + thisAmount + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + "\t" + each.getDaysRented() + "\t" + thisAmount + "\n";
             totalAmount += thisAmount;
         }
 
